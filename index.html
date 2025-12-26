@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trendy Threads - Modern Clothing Store</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Trendy Threads</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="products.html?category=men">Men</a></li>
+                <li><a href="products.html?category=women">Women</a></li>
+                <li><a href="products.html?sale=true">Sale</a></li>
+                <li><a href="#" id="accountLink">Account</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search products...">
+                    <button id="searchBtn">🔍</button>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    🛒
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1200&h=500&fit=crop" alt="Fashion Collection">
+                <div class="hero-content">
+                    <h1>New Summer Collection</h1>
+                    <p>Discover the latest trends in fashion</p>
+                    <a href="products.html" class="btn btn-primary">Shop Now</a>
+                </div>
+            </div>
+            <div class="hero-slide">
+                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=1200&h=500&fit=crop" alt="Men's Collection">
+                <div class="hero-content">
+                    <h1>Men's Premium Collection</h1>
+                    <p>Style meets comfort</p>
+                    <a href="products.html?category=men" class="btn btn-primary">Explore</a>
+                </div>
+            </div>
+            <div class="hero-slide">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&h=500&fit=crop" alt="Women's Collection">
+                <div class="hero-content">
+                    <h1>Women's Elegance</h1>
+                    <p>Elevate your wardrobe</p>
+                    <a href="products.html?category=women" class="btn btn-primary">Discover</a>
+                </div>
+            </div>
+        </div>
+        <button class="slider-btn prev" id="prevSlide">‹</button>
+        <button class="slider-btn next" id="nextSlide">›</button>
+        <div class="slider-dots" id="sliderDots"></div>
+    </section>
+
+    <!-- Category Cards -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="category-grid">
+                <a href="products.html?category=men" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?w=400&h=400&fit=crop" alt="Men's Fashion">
+                    <h3>Men's</h3>
+                </a>
+                <a href="products.html?category=women" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop" alt="Women's Fashion">
+                    <h3>Women's</h3>
+                </a>
+                <a href="products.html?category=accessories" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1523779105320-d1cd346ff52b?w=400&h=400&fit=crop" alt="Accessories">
+                    <h3>Accessories</h3>
+                </a>
+                <a href="products.html?sale=true" class="category-card sale">
+                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&h=400&fit=crop" alt="Sale">
+                    <h3>Sale</h3>
+                    <span class="badge">Up to 50% OFF</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title">New Arrivals</h2>
+            <div class="products-grid" id="featuredProducts">
+                <!-- Products will be loaded dynamically from Firestore -->
+                <div class="loading">Loading products...</div>
+            </div>
+            <div class="text-center">
+                <a href="products.html" class="btn btn-secondary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Get the latest updates on new products and upcoming sales</p>
+            <form id="newsletterForm" class="newsletter-form">
+                <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+            <p id="newsletterMessage" class="newsletter-message"></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Trendy Threads</h4>
+                    <p>Your one-stop shop for modern and stylish clothing.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="products.html?category=men">Men</a></li>
+                        <li><a href="products.html?category=women">Women</a></li>
+                        <li><a href="products.html?sale=true">Sale</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Trendy Threads. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="register">Register</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active">
+                <h2>Login to Your Account</h2>
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="button" id="googleLoginBtn" class="btn btn-google">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                    Sign in with Google
+                </button>
+                <p class="auth-message" id="loginMessage"></p>
+            </form>
+            
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form">
+                <h2>Create an Account</h2>
+                <input type="text" id="registerName" placeholder="Full Name" required>
+                <input type="email" id="registerEmail" placeholder="Email" required>
+                <input type="password" id="registerPassword" placeholder="Password (min 6 characters)" required>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="button" id="googleRegisterBtn" class="btn btn-google">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                    Sign up with Google
+                </button>
+                <p class="auth-message" id="registerMessage"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Trendy Threads</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Trendy Threads</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html?category=men">Men</a></li>
+                <li><a href="products.html?category=women">Women</a></li>
+                <li><a href="products.html?sale=true">Sale</a></li>
+                <li><a href="#" id="accountLink">Account</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search products...">
+                    <button id="searchBtn">🔍</button>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    🛒
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 id="pageTitle">All Products</h1>
+            <p id="pageSubtitle">Browse our collection</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-layout">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar">
+                    <div class="filter-header">
+                        <h3>Filters</h3>
+                        <button id="clearFilters" class="btn-text">Clear All</button>
+                    </div>
+                    
+                    <!-- Category Filter -->
+                    <div class="filter-group">
+                        <h4>Category</h4>
+                        <label class="filter-option">
+                            <input type="radio" name="category" value="all" checked>
+                            <span>All</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="category" value="men">
+                            <span>Men</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="category" value="women">
+                            <span>Women</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="category" value="unisex">
+                            <span>Unisex</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="category" value="accessories">
+                            <span>Accessories</span>
+                        </label>
+                    </div>
+                    
+                    <!-- Size Filter -->
+                    <div class="filter-group">
+                        <h4>Size</h4>
+                        <label class="filter-option">
+                            <input type="checkbox" name="size" value="XS">
+                            <span>XS</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="size" value="S">
+                            <span>S</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="size" value="M">
+                            <span>M</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="size" value="L">
+                            <span>L</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="size" value="XL">
+                            <span>XL</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="size" value="XXL">
+                            <span>XXL</span>
+                        </label>
+                    </div>
+                    
+                    <!-- Color Filter -->
+                    <div class="filter-group">
+                        <h4>Color</h4>
+                        <label class="filter-option">
+                            <input type="checkbox" name="color" value="Black">
+                            <span>Black</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="color" value="White">
+                            <span>White</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="color" value="Blue">
+                            <span>Blue</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="color" value="Red">
+                            <span>Red</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="color" value="Green">
+                            <span>Green</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="color" value="Gray">
+                            <span>Gray</span>
+                        </label>
+                    </div>
+                    
+                    <!-- Price Range Filter -->
+                    <div class="filter-group">
+                        <h4>Price Range</h4>
+                        <div class="price-inputs">
+                            <input type="number" id="minPrice" placeholder="Min" min="0">
+                            <span>-</span>
+                            <input type="number" id="maxPrice" placeholder="Max" min="0">
+                        </div>
+                        <button id="applyPrice" class="btn btn-secondary btn-sm">Apply</button>
+                    </div>
+                    
+                    <!-- Sale Filter -->
+                    <div class="filter-group">
+                        <label class="filter-option">
+                            <input type="checkbox" id="saleOnly">
+                            <span>On Sale Only</span>
+                        </label>
+                    </div>
+                </aside>
+
+                <!-- Products Grid -->
+                <div class="products-main">
+                    <div class="products-controls">
+                        <p class="results-count">
+                            <span id="resultsCount">0</span> products found
+                        </p>
+                        <div class="sort-controls">
+                            <label for="sortBy">Sort by:</label>
+                            <select id="sortBy">
+                                <option value="featured">Featured</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="newest">Newest</option>
+                                <option value="popular">Most Popular</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Products will be loaded dynamically -->
+                        <div class="loading">Loading products...</div>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="pagination" id="pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Trendy Threads</h4>
+                    <p>Your one-stop shop for modern and stylish clothing.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="products.html?category=men">Men</a></li>
+                        <li><a href="products.html?category=women">Women</a></li>
+                        <li><a href="products.html?sale=true">Sale</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Trendy Threads. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="register">Register</button>
+            </div>
+            
+            <form id="loginForm" class="auth-form active">
+                <h2>Login to Your Account</h2>
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="button" id="googleLoginBtn" class="btn btn-google">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                    Sign in with Google
+                </button>
+                <p class="auth-message" id="loginMessage"></p>
+            </form>
+            
+            <form id="registerForm" class="auth-form">
+                <h2>Create an Account</h2>
+                <input type="text" id="registerName" placeholder="Full Name" required>
+                <input type="email" id="registerEmail" placeholder="Email" required>
+                <input type="password" id="registerPassword" placeholder="Password (min 6 characters)" required>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="button" id="googleRegisterBtn" class="btn btn-google">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                    Sign up with Google
+                </button>
+                <p class="auth-message" id="registerMessage"></p>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>
