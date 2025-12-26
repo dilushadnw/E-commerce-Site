@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Trendy Threads</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Trendy Threads</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="admin.html" class="active">Admin Panel</a></li>
+                <li><a href="index.html">Back to Store</a></li>
+                <li><a href="#" id="adminLogout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Admin Panel -->
+    <section class="admin-section">
+        <div class="container">
+            <div id="adminAccess" style="display: none;">
+                <h1>Admin Dashboard</h1>
+                
+                <!-- Admin Tabs -->
+                <div class="admin-tabs">
+                    <button class="admin-tab-btn active" data-tab="products">Products</button>
+                    <button class="admin-tab-btn" data-tab="orders">Orders</button>
+                    <button class="admin-tab-btn" data-tab="add-product">Add Product</button>
+                </div>
+
+                <!-- Products Tab -->
+                <div id="products-tab" class="admin-tab-content active">
+                    <h2>Manage Products</h2>
+                    <div class="admin-table-wrapper">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsTable">
+                                <tr>
+                                    <td colspan="6" class="loading">Loading products...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Orders Tab -->
+                <div id="orders-tab" class="admin-tab-content">
+                    <h2>Manage Orders</h2>
+                    <div class="admin-table-wrapper">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTable">
+                                <tr>
+                                    <td colspan="6" class="loading">Loading orders...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Add Product Tab -->
+                <div id="add-product-tab" class="admin-tab-content">
+                    <h2 id="formTitle">Add New Product</h2>
+                    <form id="productForm" class="admin-form">
+                        <input type="hidden" id="productId">
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productName">Product Name *</label>
+                                <input type="text" id="productName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productCategory">Category *</label>
+                                <select id="productCategory" required>
+                                    <option value="">Select Category</option>
+                                    <option value="men">Men</option>
+                                    <option value="women">Women</option>
+                                    <option value="unisex">Unisex</option>
+                                    <option value="accessories">Accessories</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productPrice">Price *</label>
+                                <input type="number" id="productPrice" step="0.01" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productStock">Stock Quantity *</label>
+                                <input type="number" id="productStock" min="0" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productDescription">Description *</label>
+                            <textarea id="productDescription" rows="4" required></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productSizes">Available Sizes (comma-separated)</label>
+                                <input type="text" id="productSizes" placeholder="e.g., XS, S, M, L, XL">
+                            </div>
+                            <div class="form-group">
+                                <label for="productColors">Available Colors (comma-separated)</label>
+                                <input type="text" id="productColors" placeholder="e.g., Black, White, Blue">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="productOnSale">
+                                On Sale
+                            </label>
+                        </div>
+
+                        <div class="form-group" id="saleFields" style="display: none;">
+                            <label for="productSalePrice">Sale Price</label>
+                            <input type="number" id="productSalePrice" step="0.01" min="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productImages">Product Images *</label>
+                            <input type="file" id="productImages" accept="image/*" multiple>
+                            <p class="form-help">You can upload multiple images. First image will be the main image.</p>
+                        </div>
+
+                        <div id="imagePreview" class="image-preview"></div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="submitBtn">Add Product</button>
+                            <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                        </div>
+                        
+                        <p id="formMessage" class="form-message"></p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Access Denied Message -->
+            <div id="accessDenied" class="access-denied">
+                <h2>Access Denied</h2>
+                <p>You need to be logged in as an admin to access this page.</p>
+                <a href="index.html" class="btn btn-primary">Go to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Details Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Order Details</h2>
+            <div id="orderDetails">
+                <!-- Order details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Trendy Threads. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>
